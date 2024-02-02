@@ -1,0 +1,45 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card-header>
+    <ion-card-title title="center" class="ion-text-center"
+      >Login
+    </ion-card-title>
+  </ion-card-header>
+
+  <form [formGroup]="neelform" (ngSubmit)="submitForm()">
+    <ion-card-content>
+      <ion-input
+        type="email"
+        fill="solid"
+        label="Email"
+        name="email"
+        labelPlacement="floating"
+        helperText="Enter email"
+        formControlName="email"                
+      ></ion-input>                   
+                                <!-- Use formGroup.get('formControlName') -->
+      <small *ngIf="neelform.get('email').invalid && neelform.get('email').touched " > Enter valid email</small>
+
+      <ion-input
+        type="password"
+        name=" password"
+        fill="solid"
+        label="password"
+        labelPlacement="floating"
+        helperText="Enter password"
+        formControlName="password"
+      ></ion-input>
+      <small *ngIf="neelform.get('password').invalid && neelform.get('password').touched " > Enter password</small>
+
+      <ion-button type="submit" [disabled]="!neelform.valid" expand="block"
+        >Login</ion-button
+      >
+    </ion-card-content>
+  </form>
+</ion-content>

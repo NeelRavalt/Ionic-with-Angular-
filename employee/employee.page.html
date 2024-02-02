@@ -1,0 +1,116 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- back button... import getBackButtonText() -->
+    <ion-buttons slot="start">
+      <ion-back-button
+        [text]="getBackButtonText()"
+        defaultHref="/"
+      ></ion-back-button>
+    </ion-buttons>
+    <!-- back button end  -->
+    <ion-title>Employee Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="ionicForm" (ngSubmit)=" submitForm()">
+    <ion-list>
+      <ion-item lines="full">
+        <ion-input
+          type="text"
+          label="Employee Name"
+          labelPlacement="floating"
+          formControlName="name"
+          required
+        ></ion-input>
+      </ion-item>
+      <!-- validation -->
+      <!-- Use formGroup.get('formControlName') -->
+      <small
+        *ngIf=" ionicForm.get('name').invalid && ionicForm.get('name').touched"
+      >
+        Enter Name</small
+      >
+
+      <ion-item lines="full">
+        <ion-input
+          type="email"
+          label="Email"
+          labelPlacement="floating"
+          formControlName="email"
+          required
+        ></ion-input>
+      </ion-item>
+      <!-- validation -->
+      <small
+        *ngIf=" ionicForm.get('email').invalid && ionicForm.get('email').touched"
+      >
+        Enter Valid Email</small
+      >
+      <ion-item lines="full">
+        <ion-input
+          type="date"
+          formControlName="dob"
+          label="DOB"
+          labelplacement="floating"
+          required
+        ></ion-input>
+      </ion-item>
+      <!-- validation -->
+      <small
+        *ngIf=" ionicForm.get('dob').invalid && ionicForm.get('dob').touched"
+      >
+        Enter DOB
+      </small>
+
+      <ion-item lines="full">
+        <ion-input
+          type="text"
+          label="Mobile"
+          formControlName="mobile"
+          labelplacement="floating"
+          required
+        ></ion-input>
+      </ion-item>
+      <!-- validation -->
+      <small
+        *ngIf=" ionicForm.get('mobile').invalid && ionicForm.get('mobile').touched"
+      >
+        Enter Number</small
+      >
+
+      <!-- Radio buttons -->
+      <ion-radio-group lines="full" formControlName="button">
+        <ion-list-header>
+          <ion-label>Gender</ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>Male</ion-label>
+          <ion-radio slot="start" value="male" checked></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Female</ion-label>
+          <ion-radio slot="start" value="female"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+      <small
+        *ngIf=" ionicForm.get('button').invalid && ionicForm.get('button').touched"
+      >
+        select button</small
+      >
+      <ion-row>
+        <ion-col>
+          <ion-button
+            type="submit"
+            [disabled]="!ionicForm.valid"    
+            color="primary"
+            expand="block"
+            >add</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </form>
+</ion-content>
