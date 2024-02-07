@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- back button -->
+    <ion-buttons slot="start">
+      <ion-back-button
+        [text]="getBackButtonText()"
+        defaultHref="/"
+      ></ion-back-button>
+    </ion-buttons>
+    <!-- back button end  -->
+
+    <ion-title>contact</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()">
+    <ion-list>
+      <div formArrayName="skills" *ngFor="let skill of skills.controls; let i = index;">
+
+      <!-- <div formArrayName="skills" *ngFor="let neel of ionicForm.get('skills')['controls']; let i=index;"> -->
+        <div [formGroupName]="i">
+          <ion-input
+            type="tel"
+            label="Mobile"
+            labelplacement="floating"
+            placeholder="888-888-8888"
+            formControlName="mobile"
+            maxlength="10"
+            required
+          ></ion-input>
+          <div *ngIf=" f.controls[i].get('mobile').invalid && f.controls[i].get('mobile').touched  " style="color:red;">
+            Enter valid mobile 
+           
+           </div>
+          <div *ngIf="f.controls[i].get('mobile').dirty  && f.controls[i].get('mobile').errors?.['duplicate']" style="color:red;">
+            Number has been used
+          </div>
+          <ion-input
+            type="email"
+            label="Email"
+            labelPlacement="floating"
+            formControlName="email"
+            placeholder="neel@gmail.com"
+            required
+          ></ion-input>
+          <div *ngIf=" f.controls[i].get('email').invalid && f.controls[i].get('email').touched" style="color:red;">
+           Enter valid email 
+          
+          </div>
+          <div *ngIf=" f.controls[i].get('email').dirty && f.controls[i].get('email').errors?.['duplicate']" style="color:red;">
+            This email has been used
+          
+          </div>
+        </div>
+      </div>
+
+      <ion-button color="primary" (click)="addSkills()">Add more</ion-button> 
+    </ion-list>
+  </form>
+</ion-content>
