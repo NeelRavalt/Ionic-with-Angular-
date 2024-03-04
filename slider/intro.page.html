@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ionic Demo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-button (click)="navigation()"> Language Traslator</ion-button>
+  <swiper-container class="swiper-container" #swiper>
+    <swiper-slide>
+      <lord-icon src="https://cdn.lordicon.com/tlxagvyb.json" trigger="hover">
+      </lord-icon>
+
+      <!-- <ion-button   (click)="goToNextSlide()">nextpage</ion-button> -->
+    </swiper-slide>
+
+    <swiper-slide
+      ><lord-icon src="https://cdn.lordicon.com/avqmmngi.json" trigger="hover">
+      </lord-icon>
+      <!-- <ion-button   (click)="goToNextSlide()">nextpage</ion-button> -->
+    </swiper-slide>
+    <swiper-slide
+      ><lord-icon src="https://cdn.lordicon.com/ixmwqglt.json" trigger="hover">
+      </lord-icon>
+      <!-- <ion-button  (click)="goToNextSlide()">nextpage</ion-button> -->
+    </swiper-slide>
+    <swiper-slide
+      ><lord-icon src="https://cdn.lordicon.com/jddcnvwq.json" trigger="hover">
+      </lord-icon>
+      <ion-button (click)="login()">login</ion-button>
+    </swiper-slide>
+  </swiper-container>
+</ion-content>
